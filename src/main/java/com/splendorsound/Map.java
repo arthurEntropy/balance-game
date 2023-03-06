@@ -5,16 +5,32 @@ public class Map {
     //PROPERTIES
     private String currentMap;
 
+    // MJL - You could put these in a shared class, then in the RunProgram class use
+    // those values so that you don't have to declare the strings twice
+    //
+    // public class Colors {
+    //      public static final String RED = ...
+    // }
+    //
+    // Then in RunProgram
+    //
+    // final String errorColor = Colors.RED;
+    //
     final String RESET = "\u001B[0m";
     final String GREEN = "\u001B[32m";
     final String YELLOW = "\u001B[33m";
     final String WHITE = "\u001B[97m";
 
+    // MJL - Lombok is your friend when it comes to getters, setters, and constructors
     //GETTERS AND SETTERS
 
     //CONSTRUCTORS
 
     //METHODS
+
+    // MJL - I like what you did here to solve the problem of displaying the player in
+    // the correct cell.  A very eligant solution to work around the limitations of using
+    // the console for your UI.
     public void printMap(Player player1, Player player2) {
         String currentMap =
                 YELLOW +  "                         " + WHITE + "YANG                                                         YANG                          \n" +
@@ -40,11 +56,19 @@ public class Map {
                 YELLOW +                    "  X         X         X         X         X         X   " + GREEN +                   "       X         X         X         X         X         X  \n" +
                 YELLOW +                    "  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   " + GREEN +                   "       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \n" +
                 YELLOW +  "                          " + WHITE + "YIN                                                          YIN                          " + RESET;
+        
+        // MJL - I would imagine you know this, but you are effectively allocatin the large 
+        // String three times:  initially above, another copy after placing player1 and
+        // a third copy after placing player2.  I still like your solution, I just want to
+        // make sure you are aware of the memory impact.
         currentMap = currentMap.replace(player1.getStance(), WHITE + "@@@" + YELLOW);
         currentMap = currentMap.replace(player2.getStance(), WHITE + "@@@" + GREEN);
         System.out.println(currentMap);
         }
     public void printEmptyMap() {
+        // MJL - I could have missed a detail here, but it appears this is the same as the above
+        // method sans dislpaying the player?  Could you alter the above method to call printEmptyMap()
+        // then display the two players?
         String currentMap =
                 YELLOW +  "                         " + WHITE + "YANG                                                         YANG                          \n" +
                         YELLOW +                    "  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   " + GREEN +                   "       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \n" +
