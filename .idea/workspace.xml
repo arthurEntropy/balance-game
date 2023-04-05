@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f68d120-816d-4601-83e6-c690046709da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/splendorsound/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/balance_game_jar/balance-game.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/balance_game_jar/balance-game.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/splendorsound/ClearScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/splendorsound/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/splendorsound/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/splendorsound/RunProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/splendorsound/RunProgram.java" afterDir="false" />
-    </list>
+    <list default="true" id="6f68d120-816d-4601-83e6-c690046709da" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
