@@ -1,7 +1,5 @@
 package com.splendorsound;
 
-import com.sun.tools.jconsole.JConsolePlugin;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -9,18 +7,17 @@ public class RunProgram {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         //TODO make stance markers on map blend in with background (set background color?)
-        //TODO switch "@@@" to player initials - also require three character input
         //TODO make moves options more readable, add more moves?
         //TODO figure out how to clear console between turns
         //TODO make unit tests
 
         //SET VARIABLES FOR TEXT COLOR
-        final String resetColor = "\u001B[0m"; //RESET
-        final String errorColor = "\u001B[31m"; //RED
-        final String player2Color = "\u001B[32m"; //GREEN
-        final String player1Color = "\u001B[33m"; //YELLOW
-        final String titleColor = "\u001B[35m"; //PURPLE
-        final String keywordColor = "\u001B[36m"; //CYAN
+        final String resetColor = Color.RESET;
+        final String errorColor = Color.RED;
+        final String player2Color = Color.GREEN;
+        final String player1Color = Color.YELLOW;
+        final String titleColor = Color.PURPLE;
+        final String keywordColor = Color.CYAN;
 
         //GAME HEADER & INTRO
         printOutTitle(resetColor, titleColor, keywordColor);
@@ -35,8 +32,8 @@ public class RunProgram {
                 validInput = true;
             } else if (startInput.equalsIgnoreCase("n")) {
                 validInput = true;
-                System.out.println(errorColor + "OK WEIRD CHOICE BYEEEEEEEEEE" + resetColor);
-                System.exit(69);
+                System.out.println(errorColor + "GOODBYE!" + resetColor);
+                System.exit(0);
             } else {
                 System.out.println(errorColor + "It's a simple question. Try again." + resetColor);
             }
@@ -75,25 +72,24 @@ public class RunProgram {
         //TURN STRUCTURE:
 
         while (!gameWon) {
-
             //Increment turn count
-           turnCount++;
+            turnCount++;
 
-           //Take input for breath, execute position change
-           validInput = false;
-           while (!validInput) {
-               System.out.print(currentPlayer.getName() + "! CHOOSE YOUR " + keywordColor + "BREATH" + resetColor + " MOVE (YIN/YANG): ");
-               String breathInput = input.nextLine();
-               if (breathInput.equalsIgnoreCase("yin")) {
-                   currentPlayer.changeEnergy(-1);
-                   validInput = true;
-               } else if (breathInput.equalsIgnoreCase("yang")) {
-                   currentPlayer.changeEnergy(1);
-                   validInput = true;
-               } else {
-                   System.out.println(errorColor + "Not a valid breath move. Try again." + resetColor);
-               }
-           }
+            //Take input for breath, execute position change
+            validInput = false;
+            while (!validInput) {
+                System.out.print(currentPlayer.getName() + "! CHOOSE YOUR " + keywordColor + "BREATH" + resetColor + " MOVE (YIN/YANG): ");
+                String breathInput = input.nextLine();
+                if (breathInput.equalsIgnoreCase("yin")) {
+                    currentPlayer.changeEnergy(-1);
+                    validInput = true;
+                } else if (breathInput.equalsIgnoreCase("yang")) {
+                    currentPlayer.changeEnergy(1);
+                    validInput = true;
+                } else {
+                    System.out.println(errorColor + "Not a valid breath move. Try again." + resetColor);
+                }
+            }
             //Check to see if move took player out of bounds.
             if(currentPlayer.isOutOfBounds()) {
                 gameWon = true;
@@ -106,26 +102,26 @@ public class RunProgram {
 //            System.out.flush();
 
             //Print updated map
-           System.out.println();
-           System.out.println();
-           map.printMap(player1, player2);
-           System.out.println();
+            System.out.println();
+            System.out.println();
+            map.printMap(player1, player2);
+            System.out.println();
 
-           //Take input for position, execute position change
-           validInput = false;
-           while (!validInput) {
-               System.out.print(currentPlayer.getName() + "! CHOOSE YOUR " + keywordColor + "POSITION" + resetColor + " MOVE (FORWARD/BACK): ");
-               String positionInput = input.nextLine();
-               if (positionInput.equalsIgnoreCase("forward")) {
-                   currentPlayer.changePosition(1);
-                   validInput = true;
-               } else if (positionInput.equalsIgnoreCase("back")) {
-                   currentPlayer.changePosition(-1);
-                   validInput = true;
-               } else {
-                   System.out.println(errorColor + "Not a valid position move. Try again.\n" + resetColor);
-               }
-           }
+            //Take input for position, execute position change
+            validInput = false;
+            while (!validInput) {
+                System.out.print(currentPlayer.getName() + "! CHOOSE YOUR " + keywordColor + "POSITION" + resetColor + " MOVE (FORWARD/BACK): ");
+                String positionInput = input.nextLine();
+                if (positionInput.equalsIgnoreCase("forward")) {
+                    currentPlayer.changePosition(1);
+                    validInput = true;
+                } else if (positionInput.equalsIgnoreCase("back")) {
+                    currentPlayer.changePosition(-1);
+                    validInput = true;
+                } else {
+                    System.out.println(errorColor + "Not a valid position move. Try again.\n" + resetColor);
+                }
+            }
 
             //Check to see if move took current player out of bounds.
             if(currentPlayer.isOutOfBounds()) {
@@ -139,14 +135,14 @@ public class RunProgram {
 //            System.out.flush();
 
 
-           //Print updated map
-           System.out.println();
-           System.out.println();
-           map.printMap(player1, player2);
-           System.out.println();
+            //Print updated map
+            System.out.println();
+            System.out.println();
+            map.printMap(player1, player2);
+            System.out.println();
 
 
-           //Take input for move, execute stance changes
+            //Take input for move, execute stance changes
             validInput = false;
             while (!validInput) {
                 System.out.println(currentPlayer.getName() + "! CHOOSE YOUR " + keywordColor + "ACTION: " + resetColor + "\n");
@@ -201,7 +197,7 @@ public class RunProgram {
             currentPlayer = currentPlayer.getOpponent();
         }
 
-       //END OF GAME
+        //END OF GAME
 
         //Clear console
 //        Runtime.getRuntime().exec("clear");
@@ -231,17 +227,17 @@ public class RunProgram {
 
     private static void printOutTitle(String resetColor, String titleColor, String keywordColor) {
         System.out.println(titleColor +
-                            "                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                            "                    X~*~                                                                   ~*~X\n" +
-                            "                    X     BBBBBB      A     L          A     N     N   CCCCCC  EEEEEEE  !!    X\n" +
-                            "                    X     B     B    A A    L         A A    NN    N  C        E        !!    X\n" +
-                            "                    X     B     B   A   A   L        A   A   N N   N  C        E        !!    X\n" +
-                            "                    X     BBBBBB   AAAAAAA  L       AAAAAAA  N  N  N  C        EEEEE    !!    X\n" +
-                            "                    X     B     B  A     A  L       A     A  N   N N  C        E        !!    X\n" +
-                            "                    X     B     B  A     A  L       A     A  N    NN  C        E              X\n" +
-                            "                    X     BBBBBB   A     A  LLLLLLL A     A  N     N   CCCCCC  EEEEEEE  !!    X\n" +
-                            "                    X~*~                                                                   ~*~X\n" +
-                            "                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" +
+                "                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                "                    X~*~                                                                   ~*~X\n" +
+                "                    X     BBBBBB      A     L          A     N     N   CCCCCC  EEEEEEE  !!    X\n" +
+                "                    X     B     B    A A    L         A A    NN    N  C        E        !!    X\n" +
+                "                    X     B     B   A   A   L        A   A   N N   N  C        E        !!    X\n" +
+                "                    X     BBBBBB   AAAAAAA  L       AAAAAAA  N  N  N  C        EEEEE    !!    X\n" +
+                "                    X     B     B  A     A  L       A     A  N   N N  C        E        !!    X\n" +
+                "                    X     B     B  A     A  L       A     A  N    NN  C        E              X\n" +
+                "                    X     BBBBBB   A     A  LLLLLLL A     A  N     N   CCCCCC  EEEEEEE  !!    X\n" +
+                "                    X~*~                                                                   ~*~X\n" +
+                "                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" +
                 resetColor);
         System.out.println();
         System.out.println("                         Welcome to " + keywordColor + "BALANCE" + resetColor + " - a sparring game of physical and mental strategy.");

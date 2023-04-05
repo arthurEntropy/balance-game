@@ -5,10 +5,10 @@ public class Map {
     //PROPERTIES
     private String currentMap;
 
-    final String RESET = "\u001B[0m";
-    final String GREEN = "\u001B[32m";
-    final String YELLOW = "\u001B[33m";
-    final String WHITE = "\u001B[97m";
+    final String RESET = Color.RESET;
+    final String GREEN = Color.GREEN;
+    final String YELLOW = Color.YELLOW;
+    final String WHITE = Color.WHITE;
 
     //GETTERS AND SETTERS
 
